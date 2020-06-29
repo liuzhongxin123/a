@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titlebar_wh">50dp</dimen>
+    <integer name="drawable_wh">60</integer>
+
+    <!--主页面 Banner的高度-->
+    <dimen name="banner_height">160dp</dimen>
+
+</resources>

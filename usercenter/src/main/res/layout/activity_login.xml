@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.lzx.usercenter.viewmodel.UserViewModel" />
+        <variable
+            name="command"
+            type="com.lzx.usercenter.view.LoginActivity" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.lzx.wiget.TitleBar
+            android:id="@+id/tb_bar"
+            app:left_txt="back"
+            app:left_icon="@drawable/fanhui"
+            app:left_iocn_visible="true"
+            app:title_txt="用户登录"
+            app:right_txt=""
+            app:right_icon_visible="false"
+            app:right_icon="@drawable/xinlang"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"></com.lzx.wiget.TitleBar>
+        <ImageView
+            android:scaleType="center"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"></ImageView>
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:padding="10dp"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:text="@={vm.userEntity.username}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_hint_input_username"></EditText>
+            <EditText
+                android:inputType="textPassword"
+                android:text="@={vm.userEntity.pwd}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_hint_input_pwd"></EditText>
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_gravity="right"
+                android:text="忘记密码"
+                android:textColor="@color/gold"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/ll_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_gravity="center"
+                android:onClick="@{command::loginClick}"
+                android:text="@string/user_ui_btnlogin"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@drawable/ic_launcher_background"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"></Button>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

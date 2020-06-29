@@ -1,0 +1,1 @@
+include ':app', ':core', ':common', ':net', ':usercenter', ':wiget', ':storage', ':more', ':home', ':gradle', ':finalce', ':account'

@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+def appInfo = rootProject.ext.android
+def libs = rootProject.ext.dependencies
+android {
+    compileSdkVersion appInfo.compileSdkVersion
+    buildToolsVersion appInfo.buildToolsVersion
+    defaultConfig {
+        applicationId "com.lzx.baweiproject"
+        minSdkVersion appInfo.minSdkVersion
+        targetSdkVersion appInfo.targetSdkVersion
+        versionCode appInfo.versionCode
+        versionName appInfo.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    //开启dataBinding
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(path: ':common')
+    implementation libs.material
+
+    implementation project(path: ':wiget')
+    implementation project(path: ':core')
+    if (!IS_USERCENTER_APP.toBoolean()){
+        implementation project(path: ':usercenter')
+    }
+    if (!IS_FINALCE_APP.toBoolean()){
+        implementation project(path: ':finalce')
+    }
+
+    if (!IS_HOME_APP.toBoolean()){
+        implementation project(path: ':home')
+    }
+    if (!IS_MORE_APP.toBoolean()){
+        implementation project(path: ':more')
+    }
+
+    if (!IS_ACCOUNT_APP.toBoolean()){
+        implementation project(path: ':account')
+    }
+
+}
+repositories {
+    mavenCentral()
+}
